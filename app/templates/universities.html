@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ t('all_universities') }} — {{ t('site_name') }}{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>{{ t('all_universities') }}</h2>
+      <p>{{ results|length }} {{ t('stat_universities') }}</p>
+    </div>
+
+    <form class="filter-bar" method="get" action="/universities">
+      <input type="hidden" name="lang" value="{{ lang }}">
+      <input type="text" name="q" value="{{ query }}" placeholder="{{ t('search_placeholder') }}">
+      <select name="country">
+        <option value="">{{ t('filter_all') }} — {{ t('filter_country') }}</option>
+        {% for code, count in countries.items() %}
+          <option value="{{ code }}" {% if code == country_filter %}selected{% endif %}>{{ country_name(code) }} ({{ count }})</option>
+        {% endfor %}
+      </select>
+      <select name="sort">
+        <option value="name" {% if sort == 'name' %}selected{% endif %}>{{ t('sort_name') }}</option>
+        <option value="year" {% if sort == 'year' %}selected{% endif %}>{{ t('sort_year') }}</option>
+        <option value="students" {% if sort == 'students' %}selected{% endif %}>{{ t('sort_students') }}</option>
+      </select>
+      <button class="btn btn-primary" type="submit">🔍</button>
+    </form>
+
+    {% if results %}
+      <div class="uni-grid">
+        {% for u in results %}
+          {% include "_uni_card.html" %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty">
+        <h3>{{ t('no_results') }}</h3>
+        <p>—</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

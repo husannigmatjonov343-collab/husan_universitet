@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ t('nav_countries') }} — {{ t('site_name') }}{% endblock %}
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>{{ t('countries_title') }}</h2>
+      <p>{{ t('countries_sub') }}</p>
+    </div>
+    <div class="country-grid">
+      {% for c in countries_data %}
+        <a href="/universities?lang={{ lang }}&country={{ c.code }}" class="country-card">
+          <div class="country-flag">{{ c.code }}</div>
+          <h3>{{ country_name(c.code) }}</h3>
+          <p>{{ c.count }} {{ t('universities_in') }}</p>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

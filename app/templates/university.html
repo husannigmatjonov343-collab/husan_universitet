@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}{{ uni.name[lang] }} — {{ t('site_name') }}{% endblock %}
+{% block content %}
+<div class="container">
+  <div style="padding-top: 24px;">
+    <a href="/universities?lang={{ lang }}" class="btn btn-ghost">← {{ t('back') }}</a>
+  </div>
+
+  <div class="uni-hero">
+    <img src="{{ uni.image }}" alt="{{ uni.name[lang] }}">
+    <div class="uni-hero-overlay">
+      <span class="uni-badge" style="margin-bottom: 12px;">{{ country_name(uni.country) }} · {{ t(uni.type) }}</span>
+      <h1>{{ uni.name[lang] }}</h1>
+      <div class="meta">
+        <span>📍 {{ uni.city[lang] }}</span>
+        <span>🎓 {{ t('founded') }} {{ uni.founded }}</span>
+        <span>👥 {{ '{:,}'.format(uni.students) }} {{ t('students') }}</span>
+        <span>🏆 {{ t('ranking') }} #{{ uni.ranking }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-grid">
+    <div>
+      <div class="card">
+        <h2>{{ t('about_uni') }}</h2>
+        <p>{{ uni.description[lang] }}</p>
+      </div>
+
+      <div class="card">
+        <h2>{{ t('faculties') }} ({{ uni.faculties[lang]|length }})</h2>
+        <div class="faculty-list">
+          {% for f in uni.faculties[lang] %}
+            <span class="faculty-chip">{{ f }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>{{ t('admission') }}</h2>
+        <p>{{ t('admission_text') }}</p>
+      </div>
+
+      {% if similar %}
+      <div class="card">
+        <h2>{{ country_name(uni.country) }} — {{ t('universities_in') }}</h2>
+        <div class="uni-grid" style="margin-top: 16px;">
+          {% for u in similar %}
+            {% include "_uni_card.html" %}
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <aside>
+      <div class="card">
+        <h2>{{ t('contact') }}</h2>
+        <ul class="info-list">
+          <li><span class="label">{{ t('address') }}</span><span class="value">{{ uni.address[lang] }}</span></li>
+          <li><span class="label">{{ t('phone') }}</span><span class="value">{{ uni.phone }}</span></li>
+          <li><span class="label">{{ t('email') }}</span><span class="value">{{ uni.email }}</span></li>
+          <li><span class="label">{{ t('website') }}</span><span class="value"><a href="{{ uni.website }}" target="_blank" rel="noopener" style="color: var(--primary-glow)">{{ uni.website|replace('https://','') }} ↗</a></span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>{{ t('featured') }}</h2>
+        <ul class="info-list">
+          <li><span class="label">{{ t('founded') }}</span><span class="value">{{ uni.founded }}</span></li>
+          <li><span class="label">{{ t('students') }}</span><span class="value">{{ '{:,}'.format(uni.students) }}</span></li>
+          <li><span class="label">{{ t('type') }}</span><span class="value">{{ t(uni.type) }}</span></li>
+          <li><span class="label">{{ t('ranking') }}</span><span class="value">#{{ uni.ranking }}</span></li>
+          <li><span class="label">{{ t('faculties') }}</span><span class="value">{{ uni.faculties[lang]|length }}</span></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</div>
+{% endblock %}

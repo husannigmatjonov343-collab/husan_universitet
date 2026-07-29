@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="container">
+    <span class="hero-tag">✨ {{ total_universities }}+ {{ t('stat_universities') }} · {{ total_countries }} {{ t('stat_countries') }}</span>
+    <h1>{{ t('hero_title') }}</h1>
+    <p>{{ t('hero_subtitle') }}</p>
+    <a href="/universities?lang={{ lang }}" class="btn btn-primary">{{ t('hero_cta') }} →</a>
+  </div>
+</section>
+
+<section class="container">
+  <div class="stats">
+    <div class="stat"><div class="stat-value">{{ total_universities }}+</div><div class="stat-label">{{ t('stat_universities') }}</div></div>
+    <div class="stat"><div class="stat-value">{{ total_countries }}</div><div class="stat-label">{{ t('stat_countries') }}</div></div>
+    <div class="stat"><div class="stat-value">{{ total_faculties }}+</div><div class="stat-label">{{ t('stat_faculties') }}</div></div>
+    <div class="stat"><div class="stat-value">{{ '{:,}'.format(total_students) }}+</div><div class="stat-label">{{ t('stat_students') }}</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>{{ t('featured') }}</h2>
+      <p>{{ t('featured_sub') }}</p>
+    </div>
+    <div class="uni-grid">
+      {% for u in featured %}
+        {% include "_uni_card.html" %}
+      {% endfor %}
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="/universities?lang={{ lang }}" class="btn btn-ghost">{{ t('view_all') }} →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background: var(--bg-elevated);">
+  <div class="container">
+    <div class="section-head">
+      <h2>{{ t('why_us') }}</h2>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🎯</div>
+        <h3>{{ t('feature_1_title') }}</h3>
+        <p>{{ t('feature_1_text') }}</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🚀</div>
+        <h3>{{ t('feature_2_title') }}</h3>
+        <p>{{ t('feature_2_text') }}</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🌍</div>
+        <h3>{{ t('feature_3_title') }}</h3>
+        <p>{{ t('feature_3_text') }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

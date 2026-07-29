@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ t('about_page_title') }} — {{ t('site_name') }}{% endblock %}
+{% block content %}
+<section class="hero" style="padding: 80px 0 40px;">
+  <div class="container">
+    <span class="hero-tag">ℹ️ {{ t('about_page_title') }}</span>
+    <h1>{{ t('site_name') }}</h1>
+    <p>{{ t('about_page_text') }}</p>
+  </div>
+</section>
+
+<section class="container">
+  <div class="stats">
+    <div class="stat"><div class="stat-value">{{ total_universities }}+</div><div class="stat-label">{{ t('stat_universities') }}</div></div>
+    <div class="stat"><div class="stat-value">{{ total_countries }}</div><div class="stat-label">{{ t('stat_countries') }}</div></div>
+    <div class="stat"><div class="stat-value">3</div><div class="stat-label">{{ t('language') }}</div></div>
+    <div class="stat"><div class="stat-value">100%</div><div class="stat-label">Free</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🎯</div>
+        <h3>{{ t('feature_1_title') }}</h3>
+        <p>{{ t('feature_1_text') }}</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🚀</div>
+        <h3>{{ t('feature_2_title') }}</h3>
+        <p>{{ t('feature_2_text') }}</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🌍</div>
+        <h3>{{ t('feature_3_title') }}</h3>
+        <p>{{ t('feature_3_text') }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

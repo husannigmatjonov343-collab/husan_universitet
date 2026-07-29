@@ -1,0 +1,12 @@
+<a href="/universities/{{ u.id }}?lang={{ lang }}" class="uni-card">
+  <img class="uni-card-img" src="{{ u.image }}" alt="{{ u.name[lang] }}" loading="lazy">
+  <div class="uni-card-body">
+    <span class="uni-badge">{{ country_name(u.country) }} · {{ t(u.type) }}</span>
+    <h3>{{ u.name[lang] }}</h3>
+    <div class="meta">📍 {{ u.city[lang] }} · {{ t('founded') }} {{ u.founded }}</div>
+    <div class="footer">
+      <span class="rank">{{ t('ranking') }}: <strong>#{{ u.ranking }}</strong></span>
+      <span class="arrow">{{ t('learn_more') }} →</span>
+    </div>
+  </div>
+</a>
