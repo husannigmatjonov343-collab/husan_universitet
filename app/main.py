@@ -113,11 +113,11 @@ def about(request: Request, lang: str = Query("uz")):
 
 @app.get("/profile")
 def profile(request: Request, lang: str = "uz"):
-    # Boshqa route'laringizda tarjimani qanday chaqirgan bo'lsangiz, bu yerda ham shunday qiling
-    current_path = request.url.path
+    lang = get_lang(lang)  # Tilni tekshirib olish (agar kerak bo'lsa)
     
-    return templates.TemplateResponse("profile.html", {
-        "request": request,
-        "lang": lang,
-        "current_path": current_path,
-    })
+    context = base_ctx(request, lang)
+    
+    # Agar profile.html ga boshqa ma'lumotlar ham uzatish kerak bo'lsa:
+    # context["user"] = user_data 
+
+    return templates.TemplateResponse("profile.html", context)
