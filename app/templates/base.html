@@ -22,6 +22,7 @@
         <li><a href="/universities?lang={{ lang }}" class="{% if '/universities' in current_path %}active{% endif %}">{{ t('nav_universities') }}</a></li>
         <li><a href="/countries?lang={{ lang }}" class="{% if current_path == '/countries' %}active{% endif %}">{{ t('nav_countries') }}</a></li>
         <li><a href="/about?lang={{ lang }}" class="{% if current_path == '/about' %}active{% endif %}">{{ t('nav_about') }}</a></li>
+        <a href="/profile">Profil</a>
       </ul>
       <div class="lang-switch">
         {% for lg in supported_langs %}

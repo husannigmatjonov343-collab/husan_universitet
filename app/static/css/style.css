@@ -475,3 +475,48 @@ footer {
 
 .empty { text-align: center; padding: 60px 20px; color: var(--text-muted); }
 .empty h3 { font-size: 22px; margin-bottom: 8px; color: var(--text); }
+
+
+
+
+/* ---------------- Profile page ---------------- */
+.profile-page{ padding: 60px 0 90px; }
+.profile-header{ display:flex; align-items:center; gap:22px; margin-bottom: 40px; }
+.profile-avatar{
+  width: 84px; height:84px; border-radius: 20px;
+  background: linear-gradient(160deg, #a855f7, #6366f1);
+  display:flex; align-items:center; justify-content:center;
+  font-size: 2.2rem;
+  box-shadow: 0 12px 30px -10px rgba(168,85,247,0.5);
+}
+.profile-sub{ color: var(--paper-dim, #9ca3af); font-family: var(--font-mono); font-size:.9rem; margin:0; }
+
+.profile-grid{
+  display:grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  margin-bottom: 44px;
+}
+.profile-card{
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 20px;
+  display:flex; flex-direction:column; gap:8px;
+}
+.profile-card-label{ font-family: var(--font-mono); font-size:.72rem; text-transform:uppercase; letter-spacing:.06em; color:#9ca3af; }
+.profile-card-value{ font-family: var(--font-display); font-size: 1.6rem; color:#c4b5fd; }
+
+.profile-section{ margin-bottom: 40px; }
+.skill-list{ display:flex; flex-wrap:wrap; gap:10px; }
+.skill-chip{
+  font-family: var(--font-mono); font-size:.82rem;
+  background: rgba(168,85,247,0.14);
+  border: 1px solid rgba(168,85,247,0.35);
+  color:#c4b5fd;
+  padding: 7px 14px; border-radius: 999px;
+}
+.profile-about{ max-width: 70ch; line-height:1.7; }
+
+@media (max-width: 700px){
+  .profile-grid{ grid-template-columns: repeat(2,1fr); }
+  .profile-header{ flex-direction:column; text-align:center; }
+}

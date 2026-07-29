@@ -109,3 +109,8 @@ def about(request: Request, lang: str = Query("uz")):
         "total_countries": len(uni_repo.all_countries()),
     })
     return templates.TemplateResponse(request, "about.html", ctx)
+
+
+@app.get("/profile")
+def profile(request: Request):
+    return templates.TemplateResponse("profile.html", {"request": request})
